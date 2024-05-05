@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Strike&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Protest+Strike&family=Tenor+Sans&display=swap" rel="stylesheet">
+    <title>Dapper Doggy</title>
+</head>
+
+<body>
+    <header>
+        <h1 class="title">Dapper Doggy</h1>
+    </header>
+
+    <nav class="navbar">
+        <ul>
+            <li><a href="index.html" class="selected-nav">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="dogs.html">Gallery</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main class="content">
+        <div class="image-area" id="slideshow">
+            <p class="credit">Photo by <a
+                    href="https://unsplash.com/@nicoletarasuk">Nicole Logan</a> on <a
+                    href="https://unsplash.com/photos/a-brown-dog-standing-on-top-of-a-wooden-deck-TUlMCO59SKE">Unsplash</a>
+            </p>
+        </div>
+
+        <div class="page-description">
+            <h2>THE BEST FOR <span class="gradient-text">YOUR DOG</span></h2>
+            <p class="larger-text">Offering a superior grooming experience.</p>
+            <a href="dogs.html" class="gallery-button">GALLERY</a>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024. All Rights Reserved. Dapper Doggy&reg;.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const images = [
+                'dog1.jpeg',
+                'dog2.jpeg',
+                'dog3.jpg',
+                'dog4.jpg',
+                'dog5.jpg',
+                'dog6.jpg'
+            ];
+            const credits = [
+                'Photo by <a href="https://unsplash.com/@alvannee">Alvan Nee</a> on <a href="https://unsplash.com/photos/long-coated-white-and-tan-dog-NeRrOJJs1J8">Unsplash</a>',
+                'Photo by <a href="https://unsplash.com/@wannesdemol">Wannes de Mol</a> on <a href="https://unsplash.com/photos/black-and-tan-german-shepherd-Ckhl9kB1SKQ">Unsplash</a>',
+                'Photo by <a href="https://unsplash.com/photos/holds-leash-in-the-mouth-two-golden-retrievers-together-in-the-studio-against-white-background-tnoEZSSSznw">Unsplash</a>',
+                'Photo by <a href="https://twitter.com/ProPepper">ProPepper</a> on <a href="https://twitter.com/ProPepper/status/1166610321378816000?lang=en">Twitter</a>',
+                'Photo by <a href="https://unsplash.com/@stibi">Tuomas Härkönen</a> on <a href="https://unsplash.com/photos/brown-poodle-on-white-bed-vtGlHXIBeo8">Unsplash</a>',
+                'Photo by <a href="https://unsplash.com/photos/dog-gets-hair-cut-at-pet-spa-grooming-salon-closeup-of-dog-face-while-groomer-cutting-hair-with-scissors-high-resolution-R_Jtn25qKHc">Unsplash</a>'
+            ];
+            let currentIndex = 0;
+
+            function changeImage() {
+                const imgContainer = document.getElementById('slideshow');
+                const creditText = document.querySelector('.credit');
+
+                imgContainer.style.opacity = 0;
+
+                setTimeout(function () {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    imgContainer.style.backgroundImage = `url('./assets/dog-images/${images[currentIndex]}')`;
+                    creditText.innerHTML = credits[currentIndex];
+                    imgContainer.setAttribute('aria-label', 'UNC Campus Image');
+                    imgContainer.style.opacity = 1;
+                }, 1000);
+            }
+
+            setInterval(changeImage, 5000);
+        });
+    </script>
+</body>
+
+</html>
